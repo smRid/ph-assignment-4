@@ -14,7 +14,6 @@ Ans -
     This is a method that utilizes the selector API to find elements using CSS syntax.
 
 2. How do you create and insert a new element into the DOM?
-
 Ans - To manipulate the DOM effectively first I need to create the element in memory then attach it to the stucture of a webpage.
 
 3. What is Event Bubbling? And how does it work?
@@ -25,5 +24,4 @@ Ans - Event delegation is a method that takes advantage of event bubbling.
     It is useful for memory efficiency where it can take up small amount of memry for a big data table, it can optimise the listeners in browser.
 
 5. What is the difference between preventDefault() and stopPropagation() methods?
-
 Ans - While both methods are used to "interrupt" the normal flow of an event, they handle two completely different aspects of how a browser reacts to a user's action. preventDefault() stops the browser's built-in behavior, while stopPropagation() stops the event from traveling up the DOM tree.
