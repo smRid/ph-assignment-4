@@ -3,8 +3,9 @@ let totalCountElement = document.getElementById("overall-total-count");
 let interviewCountElement = document.getElementById("interview-count");
 let rejectedCountElement = document.getElementById("rejected-count");
 
-// Get all job cards by their class name
+// Get all job cards
 let allJobCards = document.getElementsByClassName("single-job-card");
+let availableJobsCount = document.getElementById("available-jobs-count");
 
 // Filter buttons
 const allToggleBtn = document.getElementById("filter-btn-all");
@@ -15,7 +16,12 @@ function updateTotalCount() {
     totalCountElement.innerText = allJobCards.length;
 }
 
+function updateJobCount() {
+    availableJobsCount.innerText = allJobCards.length + " jobs";
+}
+
 updateTotalCount();
+updateJobCount();
 
 
 // Interview & Rejected counters
@@ -43,7 +49,7 @@ function updateStatusCounts() {
 }
 
 
-// Filter cards (show only matching ones)
+// Filter cards
 
 function applyFilter(filterType) {
     let allCards = document.getElementsByClassName("single-job-card");
@@ -138,6 +144,19 @@ function updateStatus(button, badgeId, action) {
         statusBadge.classList.add("border", "border-red-500", "text-red-600");
     }
 
+    updateStatusCounts();
+    applyFilter(activeFilter);
+}
+
+
+// Delete card button
+
+function removeCard(button) {
+    let card = button.closest(".single-job-card");
+    card.remove();
+
+    updateTotalCount();
+    updateJobCount();
     updateStatusCounts();
     applyFilter(activeFilter);
 }
