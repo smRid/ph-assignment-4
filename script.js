@@ -47,6 +47,8 @@ function updateStatusCounts() {
 
 function applyFilter(filterType) {
     let allCards = document.getElementsByClassName("single-job-card");
+    let emptyState = document.getElementById("empty-state-box");
+    let visibleCount = 0;
 
     for (let i = 0; i < allCards.length; i++) {
         let badge = allCards[i].querySelector(".status-badge");
@@ -55,19 +57,29 @@ function applyFilter(filterType) {
         if (filterType === "all") {
 
             allCards[i].style.display = "block";
+            visibleCount = visibleCount + 1;
         } else if (filterType === "interview") {
             if (badgeText === "INTERVIEW") {
                 allCards[i].style.display = "block";
+                visibleCount = visibleCount + 1;
             } else {
                 allCards[i].style.display = "none";
             }
         } else if (filterType === "rejected") {
             if (badgeText === "REJECTED") {
                 allCards[i].style.display = "block";
+                visibleCount = visibleCount + 1;
             } else {
                 allCards[i].style.display = "none";
             }
         }
+    }
+
+    // Show or hide the empty state
+    if (visibleCount === 0) {
+        emptyState.classList.remove("hidden");
+    } else {
+        emptyState.classList.add("hidden");
     }
 }
 
